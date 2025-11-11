@@ -1,0 +1,4 @@
+---
+variables:
+  rss_agg_dict: blog
+  rss_uri: /rss.xml
