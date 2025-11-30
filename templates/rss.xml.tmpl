@@ -1,0 +1,33 @@
+---
+layout: _blank
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{{ .Site.Name }}</title>
+        <link>{{ .Site.BaseUrl }}/rss.xml</link>
+        {{- if .Site.Description }}
+        <description>{{ .Site.Description }}</description>
+        {{ end }}
+        <atom:link href="{{ .Site.BaseUrl }}/rss.xml" rel="self"/>
+        {{- if .Site.Lang }}
+        <language>{{ .Site.Lang }}</language>
+        {{ end }}
+        <lastBuildDate>{{ .System.BuildTime }}</lastBuildDate>
+        {{- range .AggDictsData.blog.blog.true }}
+        {{- $pageId := .Id }}
+        {{- $page := index $.Pages $pageId }}
+        <item>
+            <title>{{ $page.Title }}</title>
+            <link>{{ $page.Url }}</link>
+            {{- if $page.date }}
+            <pubDate>{{ $page.date }}</pubDate>
+            {{ end }}
+            <guid>{{ $page.Url }}</guid>
+            {{- if $page.Cut }}
+            <description>{{ $page.Cut }}</description>
+            {{ end }}
+        </item>
+        {{- end }}
+    </channel>
+</rss>

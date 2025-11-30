@@ -1,4 +1,15 @@
 ---
-variables:
-  rss_agg_dict: blog
-  rss_uri: /rss.xml
+name: rss
+title: RSS
+author:
+  name: Denis Vidog
+  email: github@doubleds.ru
+  website: https://den4k.space
+generators:
+  - name: rss.xml
+    source:
+      type: data
+    template:
+      name: rss.xml
+    data:
+      - id: rss
